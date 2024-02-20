@@ -15,8 +15,12 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 
+
 def get_gemini_response(input, pdf_cotent, prompt):
     model = genai.GenerativeModel('gemini-pro-vision')
+    # img = Image.open("../Streamlit/Portfolio.png")
+    # res_img = model.generate_content(img)
+    # return res_img.text
     response = model.generate_content([input, pdf_content[0], prompt])
     return response.text
 
